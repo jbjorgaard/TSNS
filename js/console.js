@@ -1,6 +1,6 @@
 (function(root) {
   "strict";
-  define(['jquery', 'presentation', 'domain'], function($) {
+  define(['jquery', 'presentation', 'domain'], function() {
     var currentGame = new MUD.Game();
     var getGame = function() {
       return currentGame;
