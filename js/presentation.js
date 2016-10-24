@@ -1,15 +1,14 @@
 (function(root) {
   "strict";
-  var Game = function() {
-    this.currentID = 0;
-  };
+  var Game = function() {};
   Game.prototype = {
+    currentID: 0,
     running: true,
     uComm: [],
     nextID: function() { return this.currentID++; },
     printOutput: function() {
       for(var x in this.uComm) {
-        $container.append('<p>' + this.uComm[x] + '<p>');
+        MUD.Console.$container.append('<p>' + this.uComm[x] + '<p>');
       }
       this.uComm = [];
     },
