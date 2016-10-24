@@ -1,27 +1,19 @@
-(function(root) {
+// current structure to use
+define(['jquery', 'presentation', 'domain'], function($, Presentation, Domain) {
   "strict";
-  define(['jquery', 'presentation', 'domain'], function() {
-    var currentGame = new MUD.Game();
-    var getGame = function() {
-      return currentGame;
-    };
-    var $container = $('.container');
-    var $scrollChat = function() {
-      $container[0].scrollTop = $container[0].scrollHeight;
-    };
-    var runGame = function() {
-      $scrollChat();
+  return {
+    runGame: function() {
+      Presentation.$scrollChat();
       $('.inp').keyup(function(evt) {
         if(evt.keyCode == 13) {
           var entry = $(this).val();
-          getGame().processInput(entry);
-          getGame().printOutput();
+          Presentation.processInput(entry);
+          Presentation.printOutput();
           $(this).val('');
-          $scrollChat();
+          Presentation.$scrollChat();
         }
       })
       .focus();
-    };
-    runGame();
-  });
-})(window.MUD);
+    }
+  };
+});
