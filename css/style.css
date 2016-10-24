@@ -1,0 +1,49 @@
+.container, .inp {
+    color: #DDD;
+    background: #222;
+    padding: 4px 6px;
+    border: 1px #222 solid;
+    font-family: Consolas, sans-serif;
+    font-size: 13px;
+}
+
+.inp {
+    color: #000;
+    background: #e3e3e3;
+    padding: 4px 6px;
+    border: 1px #222 solid;
+    font-family: Consolas, sans-serif;
+    font-size: 13px;
+}
+
+.container p {
+    margin: 0;
+    padding: 3px 6px;
+}
+.container p:nth-child(odd) {
+    background: #333;
+}
+.container {
+    max-height: 800px;
+    min-height: 800px;
+    width:1200px;
+    overflow: hidden;
+    padding: 0;
+}
+.inp {
+    width: 1202px;
+    box-sizing: border-box;
+    height:40px;
+}
+
+.repName {
+  font-weight: bold;
+  color:red;
+  margin-right:20px;
+}
+
+.custName {
+  font-weight: bold;
+  color:#00b4ff;
+  margin-right:20px;
+}
