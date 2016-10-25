@@ -1,17 +1,22 @@
 // current structure to use
-define(['jquery', 'presentation', 'domain'], function($, Presentation, Domain) {
+define(['jquery', 'game', 'thing'], function($, Game, Domain) {
   "strict";
   var Console = function() {};
+  var currentGame = Game.create();
   Console.prototype = {
+    create: function() {
+      var currentConsole = new Console();
+      return currentConsole;
+    },
     runGame: function() {
-      Presentation.$scrollChat();
+      currentGame.$scrollChat();
       $('.inp').keyup(function(evt) {
         if(evt.keyCode == 13) {
           var entry = $(this).val();
-          Presentation.processInput(entry);
-          Presentation.printOutput();
+          currentGame.processInput(entry);
+          currentGame.printOutput();
           $(this).val('');
-          Presentation.$scrollChat();
+          currentGame.$scrollChat();
         }
       })
       .focus();
