@@ -1,7 +1,8 @@
 // current structure to use
 define(['jquery', 'presentation', 'domain'], function($, Presentation, Domain) {
   "strict";
-  return {
+  var Console = function() {};
+  Console.prototype = {
     runGame: function() {
       Presentation.$scrollChat();
       $('.inp').keyup(function(evt) {
@@ -16,4 +17,6 @@ define(['jquery', 'presentation', 'domain'], function($, Presentation, Domain) {
       .focus();
     }
   };
+  var currentConsole = new Console();
+  return currentConsole;
 });

@@ -1,6 +1,7 @@
 define(['jquery'], function($){
   "strict";
-  return {
+  var Game = function() {  };
+  Game.prototype = {
     $container:  $('.container'),
     $scrollChat: function() {
       this.$container[0].scrollTop = this.$container[0].scrollHeight;
@@ -22,4 +23,6 @@ define(['jquery'], function($){
       this.addOutput(str);
     }
   };
+  var currentGame = new Game();
+  return currentGame;
 });
