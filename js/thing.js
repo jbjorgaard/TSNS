@@ -1,8 +1,8 @@
-define(['hashmap'], function(Hashmap){
+define(function(){
   "strict";
   var Thing = function(){
-    this.contents = new Hashmap();
-    this.links = new Hashmap();
+    this.contents = new HashMap();
+    this.links = new HashMap();
   };
   Thing.prototype = {
     create: function() {

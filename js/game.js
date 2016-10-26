@@ -1,4 +1,4 @@
-define(['jquery', 'hashmap'], function($, Hashmap){
+define(['jquery'], function($){
   "strict";
   var Game = function() {  };
   Game.prototype = {
@@ -12,7 +12,7 @@ define(['jquery', 'hashmap'], function($, Hashmap){
     },
     running: true,
     uComm: [],
-    thingID: new Hashmap(),
+    thingID: new HashMap(),
     getThing: function(id) {
       return this.thingID.get(id);
     },
