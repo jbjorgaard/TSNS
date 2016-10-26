@@ -1,4 +1,4 @@
-define(['jquery'], function($){
+define(['jquery', 'hashmap'], function($, Hashmap){
   "strict";
   var Game = function() {  };
   Game.prototype = {
@@ -10,9 +10,13 @@ define(['jquery'], function($){
     $scrollChat: function() {
       this.$container[0].scrollTop = this.$container[0].scrollHeight;
     },
-    currentID: 0,
     running: true,
     uComm: [],
+    thingID: new Hashmap(),
+    getThing: function(id) {
+      return this.thingID.get(id);
+    },
+    currentID: 0,
     nextID: function() {return this.currentID++;},
     printOutput: function() {
       for(var x in this.uComm) {

@@ -1,5 +1,5 @@
 // current structure to use
-define(['jquery', 'game', 'thing'], function($, Game, Domain) {
+define(['jquery', 'game', 'thing'], function($, Game, Thing) {
   "strict";
   var Console = function() {};
   var currentGame = Game.create();
