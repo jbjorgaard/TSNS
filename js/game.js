@@ -29,8 +29,10 @@ define(['jquery'], function($){
     },
     processInput: function(str) {
       this.addOutput(str);
+    },
+    initializeGame: function() {
+    	
     }
   };
-  var currentGame = new Game();
-  return currentGame;
+  return new Game();
 });

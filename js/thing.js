@@ -78,4 +78,5 @@ define(function(){
       this.getLinks().remove(id);
     }
   };
+  return new Thing();
 });

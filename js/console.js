@@ -22,6 +22,5 @@ define(['jquery', 'game', 'thing'], function($, Game, Thing) {
       .focus();
     }
   };
-  var currentConsole = new Console();
-  return currentConsole;
+  return new Console();
 });
