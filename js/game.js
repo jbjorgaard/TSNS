@@ -3,8 +3,8 @@ define(['jquery'], function($){
   var Game = function() {  };
   Game.prototype = {
     create: function() {
-      var baseGame = new Game();
-      return baseGame;
+      var game = new Game();
+      return game;
     },
     $container:  $('.container'),
     $scrollChat: function() {
