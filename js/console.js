@@ -1,4 +1,4 @@
-define(['jquery', 'game'], function($, Game) {
+define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
   "strict";
   var Console = function() {};
   Console.prototype = {
@@ -21,6 +21,23 @@ define(['jquery', 'game'], function($, Game) {
         }
       })
       .focus();
+      
+      var fileInput = document.getElementById('fileInput');
+	  var fileDisplayArea = document.getElementById('fileDisplayArea');
+	
+	  fileInput.addEventListener('change', function(e) {
+	    var file = fileInput.files[0];
+	    var textType = /text.*/;
+	    var reader = new FileReader();
+		
+	    reader.onload = function(e) {
+		  var doc = yaml.safeLoad(reader.result, 'utf8');
+			console.log(doc);
+		};
+			
+		reader.readAsText(file);
+	
+	  });
     }
   };
   var currentGame = Game.create();

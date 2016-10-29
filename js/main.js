@@ -7,4 +7,5 @@ requirejs.config({
 requirejs(['console'], function(Console) {
   var currentConsole = Console.create();
   currentConsole.runGame();
+  	
 });
