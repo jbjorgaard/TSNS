@@ -33,6 +33,10 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 	    reader.onload = function(e) {
 		  var doc = yaml.safeLoad(reader.result, 'utf8');
 			console.log(doc);
+			console.log(doc.game.gameID);
+			if(doc.hasOwnProperty("game")){
+				console.log("game");
+			}
 		};
 			
 		reader.readAsText(file);

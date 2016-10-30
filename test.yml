@@ -1,6 +1,10 @@
-this:
-  this: that
-  that: this
-that:
-  that: this
-  this: that
+game:
+  gameID: 1
+  name: testGame1
+  rooms:
+    1: 1
+    2: 2
+  characters:
+    3: 3
+    4: 3
+  
