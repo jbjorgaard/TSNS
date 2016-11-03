@@ -34,20 +34,31 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
       
       var hasGameStored = function() {
     	  if(hasStorage() || localStorage.hasOwnProperty("tsns")) {
-    		  console.log(localStorage.tsns);
-    		  console.log(localStorage.tsns[0]);
-    		  // returns first character of tsns string
     		  return true;
     	  } else {
     		  return false;
     	  }
       };
       
+      var displayGames = function() {
+    	  if(hasGameStored()) {
+			 gameFile = JSON.parse(localStorage.tsns).tsns;
+			 gameLoad.innerHTML = "Your local browser has the following games in storage: <ul>";			 
+			 for(var i = 0; i < gameFile.length; i++) {
+				 gameLoad.innerHTML += "<li>" + gameFile[i].name + "</li>";
+			 }
+			 gameLoad.innerHTML += "</ul>";
+		  } else {
+			  gameLoad = "You have no TSNS save file in local storage, please use the upload below to begin.";
+		  }
+      };
       
-      hasGameStored();
-      
+      var gameFile;
       var fileInput = document.getElementById('fileInput');
 	  var fileDisplayArea = document.getElementById('fileDisplayArea');
+	  var gameLoad = document.getElementById('gameLoadArea');
+	  
+	  displayGames();
 	
 	  fileInput.addEventListener('change', function(e) {
 	    var file = fileInput.files[0];
@@ -60,8 +71,9 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 			if(doc.hasOwnProperty("tsns")){
 				console.log("tsns");
 				if(hasStorage()) {
-					localStorage.tsns = doc;
+					localStorage.tsns = JSON.stringify(doc);
 					console.log("Game file has been saved to localStorage");
+					displayGames();
 				}
 			}
 		};

@@ -1,7 +1,7 @@
 tsns:
   -
     id: 1
-    name: The End of Time
+    name: Red Milk
     rooms:
       -
         id: 2
@@ -11,7 +11,7 @@ tsns:
         desc: black room
   -
     id: 4
-    name: All Things to Come
+    name: We're All Mad Here
     rooms:
       -
         id: 5
