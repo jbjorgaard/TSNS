@@ -1,10 +1,21 @@
-game:
-  gameID: 1
-  name: testGame1
-  rooms:
-    1: 1
-    2: 2
-  characters:
-    3: 3
-    4: 3
+tsns:
+  game1:
+    id: 1
+    rooms:
+      room1:
+        id: 2
+        desc: white room
+      room2:
+        id: 3
+        desc: black room
+  game2:
+    id: 4
+    rooms:
+      room3:
+        id: 5
+        desc: grey room
+      room4:
+        id: 6
+        desc: clear room
+
   
