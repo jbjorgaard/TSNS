@@ -24,14 +24,14 @@
     background: #333;
 }
 .container {
-    max-height: 800px;
-    min-height: 600px;
-    width:1200px;
-    overflow: hidden;
+    max-height: 400px;
+    min-height: 400px;
+    width:800px;
+    overflow: auto;
     padding: 0;
 }
 .inp {
-    width: 1202px;
+    width: 802px;
     box-sizing: border-box;
     height:40px;
 }

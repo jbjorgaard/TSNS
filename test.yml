@@ -1,20 +1,22 @@
 tsns:
-  game1:
+  -
     id: 1
+    name: The End of Time
     rooms:
-      room1:
+      -
         id: 2
         desc: white room
-      room2:
+      -
         id: 3
         desc: black room
-  game2:
+  -
     id: 4
+    name: All Things to Come
     rooms:
-      room3:
+      -
         id: 5
         desc: grey room
-      room4:
+      -
         id: 6
         desc: clear room
 
