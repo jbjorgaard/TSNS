@@ -22,6 +22,16 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
       })
       .focus();
       
+      var gameFile;
+      var fileInput = document.getElementById('fileInput');
+	  var fileDisplayArea = document.getElementById('fileDisplayArea');
+	  
+	  var setCurrentGame = function(game) {
+		  currentGame = Game.create();
+		  currentGame.loadGame(game);
+		  console.log(currentGame.name);
+	  };
+      
       var hasStorage = function() {
     	  if(typeof(Storage) !== "undefined") {
     		  console.log("Browser supports localStorage");
@@ -41,24 +51,28 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
       };
       
       var displayGames = function() {
-    	  if(hasGameStored()) {
-			 gameFile = JSON.parse(localStorage.tsns).tsns;
-			 gameLoad.innerHTML = "Your local browser has the following games in storage: <ul>";			 
-			 for(var i = 0; i < gameFile.length; i++) {
-				 gameLoad.innerHTML += "<li>" + gameFile[i].name + "</li>";
-			 }
-			 gameLoad.innerHTML += "</ul>";
+    	  if(hasGameStored()) {    		 
+			gameFile = JSON.parse(localStorage.tsns).tsns;
+			var buildList = function() {
+				return $('#gameLoadArea').html('<ul id="gameLinks"></ul>').promise().done(function() {
+					for(var i = 0; i < gameFile.length; i++) {
+						$('#gameLoadArea ul').append('<li>' + gameFile[i].name + '</li>');
+					}
+				});
+			};
+			$.when(buildList()).done(function() {
+				$('#gameLoadArea').on('click', 'li', function(){
+					currentGame = Game.create();
+					currentGame.loadGame(gameFile[$(this).index()]);
+					console.log("game loaded: " + currentGame.name);
+				});
+			});
+			
+			
 		  } else {
 			  gameLoad = "You have no TSNS save file in local storage, please use the upload below to begin.";
 		  }
       };
-      
-      var gameFile;
-      var fileInput = document.getElementById('fileInput');
-	  var fileDisplayArea = document.getElementById('fileDisplayArea');
-	  var gameLoad = document.getElementById('gameLoadArea');
-	  
-	  displayGames();
 	
 	  fileInput.addEventListener('change', function(e) {
 	    var file = fileInput.files[0];
@@ -81,6 +95,8 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 		reader.readAsText(file);
 	
 	  });
+	  
+	  displayGames();
     }
   };
   var currentGame = Game.create();

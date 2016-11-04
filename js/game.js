@@ -32,6 +32,9 @@ define(['jquery'], function($){
     },
     initializeGame: function() {
     	
+    },
+    loadGame: function(gameFile) {
+    	this.name = gameFile.name;
     }
   };
   return new Game();
