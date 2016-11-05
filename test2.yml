@@ -5,13 +5,20 @@ tsns:
       rooms:
         -
           name: white room
-        
+          description: A infinite expanse of uninterrupted, yet translucent, form-less nothing.
+          shortDescription: A white room without definition.
         -
           name: black room
+          description: A void of pure darkness. You have no idea how large or small it is. Sound makes no echo at all.
+          shortDescription: A black room unable to be accessed by the senses.
     -
       name: All Things to Come
       rooms:
         -
           name: grey room
+          description: A dull, colorless room without defining features save the cylindrical shape.
+          shortDescription: A grey boring room.
         -
           name: clear room
+          description: A clear room that gives a sudden feeling of fright as you float through the cosmos.
+          shortDescription: A white room without definition.

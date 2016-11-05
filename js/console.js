@@ -54,9 +54,9 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
     	  if(hasGameStored()) {    		 
 			gameFile = JSON.parse(localStorage.tsns).tsns["games"];
 			var buildList = function() {
-				return $('#gameLoadArea').html('<ul id="gameLinks"></ul>').promise().done(function() {
+				return $('#gameLoadArea').html('<h4>Current Games</h4><ul id="gameLinks"></ul>').promise().done(function() {
 					for(var i = 0; i < gameFile.length; i++) {
-						$('#gameLoadArea ul').append('<li>' + gameFile[i].name + '</li>');
+						$('#gameLoadArea ul').append('<li><button>' + gameFile[i].name + '</button></li>');
 					}
 				});
 			};
@@ -66,8 +66,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 					currentGame.loadGame(gameFile[$(this).index()]);
 					console.log("game loaded: " + currentGame.name);
 				});
-			});
-			
+			});		
 			
 		  } else {
 			  gameLoad = "You have no TSNS save file in local storage, please use the upload below to begin.";
@@ -87,7 +86,6 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 				if(hasStorage()) {
 					localStorage.tsns = JSON.stringify(doc);
 					console.log("Game file has been saved to localStorage");
-					displayGames();
 				}
 			}
 		};
@@ -96,7 +94,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 	
 	  });
 	  
-	  displayGames();
+	  window.onload = displayGames();	  
     }
   };
   var currentGame = Game.create();
