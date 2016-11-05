@@ -1,7 +1,11 @@
+//pulling in dependencies
 define(['jquery', 'thing'], function($, Thing){
   "strict";
+  //empty game constructor
   var Game = function() {  };
+  //setting some properties for game class
   Game.prototype = {
+	//game creation function, same as var game = new Game();
     create: function() {
       var game = new Game();
       return game;
