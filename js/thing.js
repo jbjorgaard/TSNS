@@ -9,8 +9,10 @@ define(function(){
       var thing = new Thing();
       return thing;
     },
-    setInfo: function(loc, desc, shortDesc, name, type) {
-      this.location = loc.getID();
+    setInfo: function(currentGame, loc, desc, shortDesc, name, type) {
+      this.game = currentGame;
+      this.setId();
+      this.location = loc.getId();
       loc.addContent(this.id);
       this.description = desc;
       this.shortDescription = shortDesc;
@@ -18,16 +20,16 @@ define(function(){
       this.type = type;
     },
     setId: function() {
-      this.id = currentGame.nextID();
+      this.id = this.game.nextId();
     },
-    getID: function() {
+    getId: function() {
       return this.id;
     },
     setLocation: function(loc) {
-      this.location = loc.getID();
+      this.location = loc.getId();
     },
     getLocation: function() {
-      return currentGame.getThing(this.location);
+      return this.game.getThing(this.location);
     },
     setDescription: function(desc) {
       this.description = desc;

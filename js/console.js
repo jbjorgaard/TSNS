@@ -52,7 +52,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
       
       var displayGames = function() {
     	  if(hasGameStored()) {    		 
-			gameFile = JSON.parse(localStorage.tsns).tsns;
+			gameFile = JSON.parse(localStorage.tsns).tsns["games"];
 			var buildList = function() {
 				return $('#gameLoadArea').html('<ul id="gameLinks"></ul>').promise().done(function() {
 					for(var i = 0; i < gameFile.length; i++) {

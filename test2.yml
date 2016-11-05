@@ -1,23 +1,17 @@
 tsns:
-  -
-    id: 1
-    name: Red Milk
-    rooms:
-      -
-        id: 2
-        desc: white room
-      -
-        id: 3
-        desc: black room
-  -
-    id: 4
-    name: We're All Mad Here
-    rooms:
-      -
-        id: 5
-        desc: grey room
-      -
-        id: 6
-        desc: clear room
-
-  
+  games:
+    -
+      name: The End of Time
+      rooms:
+        -
+          name: white room
+        
+        -
+          name: black room
+    -
+      name: All Things to Come
+      rooms:
+        -
+          name: grey room
+        -
+          name: clear room

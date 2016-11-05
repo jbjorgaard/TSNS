@@ -1,4 +1,4 @@
-define(['jquery'], function($){
+define(['jquery', 'thing'], function($, Thing){
   "strict";
   var Game = function() {  };
   Game.prototype = {
@@ -12,12 +12,15 @@ define(['jquery'], function($){
     },
     running: true,
     uComm: [],
-    thingID: new HashMap(),
-    getThing: function(id) {
-      return this.thingID.get(id);
+    thingId: new HashMap(),
+    addThing: function(thing) {
+      this.thingId.put(thing.id.toString(), thing);
     },
-    currentID: 0,
-    nextID: function() {return this.currentID++;},
+    getThing: function(id) {
+      return this.thingId.get(id);
+    },
+    currentId: 0,
+    nextId: function() {return this.currentId++;},
     printOutput: function() {
       for(var x in this.uComm) {
         this.$container.append('<p>' + this.uComm[x] + '</p>');
@@ -33,8 +36,27 @@ define(['jquery'], function($){
     initializeGame: function() {
     	
     },
+    createWorld: function() {
+    	var world = Thing.create();
+    	world.game = this;
+    	world.setName("Nightmare Network");
+    	world.setId();
+    	return world;
+    },
     loadGame: function(gameFile) {
-    	this.name = gameFile.name;
+      this.world = this.createWorld();
+      console.log("Creating world");
+      this.name = gameFile.name;
+      console.log("Game title: " + this.name);
+      for(var i = 0; i < gameFile.rooms.length; i++) {
+    	  var r = gameFile.rooms[i]
+    	  var room = Thing.create();
+    	  console.log("New room created");
+    	  room.setInfo(this, this.world, r.description, r.shortDescription, r.name, "room");
+    	  console.log("Room id: " + room.id + " Room name: " + room.name);
+    	  this.addThing(room);
+    	  console.log("Room loaded into current world: " + this.world.name);
+      }
     }
   };
   return new Game();

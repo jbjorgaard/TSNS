@@ -1,23 +1,24 @@
 tsns:
-  -
-    id: 1
-    name: The End of Time
-    rooms:
-      -
-        id: 2
-        desc: white room
-      -
-        id: 3
-        desc: black room
-  -
-    id: 4
-    name: All Things to Come
-    rooms:
-      -
-        id: 5
-        desc: grey room
-      -
-        id: 6
-        desc: clear room
-
-  
+  games:
+    -
+      name: Red Milk
+      rooms:
+        -
+          name: white room
+          description: A infinite expanse of uninterrupted, yet translucent, form-less nothing.
+          shortDescription: A white room without definition.
+        -
+          name: black room
+          description: A void of pure darkness. You have no idea how large or small it is. Sound makes no echo at all.
+          shortDescription: A black room unable to be accessed by the senses.
+    -
+      name: We're All Mad Here
+      rooms:
+        -
+          name: grey room
+          description: A dull, colorless room without defining features save the cylindrical shape.
+          shortDescription: A grey boring room.
+        -
+          name: clear room
+          description: A clear room that gives a sudden feeling of fright as you float through the cosmos.
+          shortDescription: A white room without definition.
