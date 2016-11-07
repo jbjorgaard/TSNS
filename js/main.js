@@ -7,9 +7,12 @@ requirejs.config({
 });
 //require console dependency
 requirejs(['console'], function(Console) {
+
   //set currentConsole to Console imported from module
   var currentConsole = Console;
+  // currentConsole.currentGame.initializeGame();
+
   //start running the game console
   currentConsole.runGame();
-  	
+
 });

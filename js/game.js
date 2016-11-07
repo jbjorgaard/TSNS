@@ -1,5 +1,5 @@
 //pulling in dependencies
-define(['jquery', 'thing'], function($, Thing){
+define(['jquery', 'thing', 'say'], function($, Thing, Say){
   "strict";
   //empty game constructor
   var Game = function() {  };
@@ -8,6 +8,7 @@ define(['jquery', 'thing'], function($, Thing){
 	//game creation function, same as var game = new Game();
     create: function() {
       var game = new Game();
+      game.initializeGame();
       return game;
     },
     $container:  $('.container'),
@@ -16,12 +17,13 @@ define(['jquery', 'thing'], function($, Thing){
     },
     running: true,
     uComm: [],
-    thingId: new HashMap(),
+    commandMap: new HashMap(),
+    thingMap: new HashMap(),
     addThing: function(thing) {
-      this.thingId.put(thing.id.toString(), thing);
+      this.thingMap.put(thing.id.toString(), thing);
     },
     getThing: function(id) {
-      return this.thingId.get(id);
+      return this.thingMap.get(id);
     },
     currentId: 0,
     nextId: function() {return this.currentId++;},
@@ -35,10 +37,27 @@ define(['jquery', 'thing'], function($, Thing){
       this.uComm.push(str);
     },
     processInput: function(str) {
-      this.addOutput(str);
+      var playerCommand = [];
+      var command;
+      playerCommand = str.split(" ");
+      if(playerCommand[0].charAt(0) == '/') {
+        command = playerCommand[0].substr(1);
+        if(this.commandMap.get(command)) {
+          command = this.commandMap.get(command);
+          command.parse(playerCommand).output();
+          // command = command.parse(playerCommand);
+          // command.output();
+        } else {
+          this.addOutput('command does not exist');
+        }
+      } else {
+        this.addOutput(str);
+      }
+      // this.addOutput(str);
     },
     initializeGame: function() {
-    	
+      var say = Say.create(this);
+      this.commandMap.put("say", say);
     },
     createWorld: function() {
     	var world = Thing.create();
@@ -53,7 +72,7 @@ define(['jquery', 'thing'], function($, Thing){
       this.name = gameFile.name;
       console.log("Game title: " + this.name);
       for(var i = 0; i < gameFile.rooms.length; i++) {
-    	  var r = gameFile.rooms[i]
+    	  var r = gameFile.rooms[i];
     	  var room = Thing.create();
     	  console.log("New room created");
     	  room.setInfo(this, this.world, r.description, r.shortDescription, r.name, "room");

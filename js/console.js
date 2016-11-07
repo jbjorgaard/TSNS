@@ -5,13 +5,13 @@
 //Importing dependency modules
 define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
   "strict";
-  
+
   //empty console constructor
   var Console = function() {};
-  
+
   //adding properties to the console class
   Console.prototype = {
-		  
+
 	//create new console object function, this is so consoles can create new consoles
 	//this isn't really necessary but I'm following my design from other classes
     create: function() {
@@ -40,7 +40,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 
       //empty variable to store game selected from localStorage later
       var gameFile;
-      
+
       //grabbing the upload form from the page
       var fileInput = document.getElementById('fileInput');
       //grabbing the saved games display area from the page
@@ -53,7 +53,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 		  currentGame.loadGame(game);
 		  console.log("game loaded: " + currentGame.name);
 	  };
-	  
+
 	  //verifies that the browser supports localStorage
       var hasStorage = function() {
     	  if(typeof(Storage) !== "undefined") {
@@ -64,8 +64,8 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
     		  return false;
     	  }
       };
-      
-      //checks to see if localStorage already has a game file 
+
+      //checks to see if localStorage already has a game file
       var hasGameStored = function() {
       	  if(localStorage.hasOwnProperty("tsns")) {
       		  return true;
@@ -73,7 +73,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
       		  return false;
       	  }
       };
-      
+
       //builds the list of games in localStorage and outputs them to browser
       var buildList = function() {
 		    return $('#gameLoadArea').html('<h4>Current Games</h4><ul id="gameLinks" style="list-style:none"></ul>').promise().done(function() {
@@ -83,12 +83,12 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
 			$('#gameLoadArea').append('<ul style="list-style:none"><li><button id="erase-btn">Delete Local Games</button></li></ul>');
 		    });
 	  };
-      
+
       //displays list of games in local storage
       var displayGames = function() {
       	  if(hasGameStored()) {
   		  	//parses gameFile from localStorage
-		    gameFile = JSON.parse(localStorage.tsns).tsns.games;  			    
+		    gameFile = JSON.parse(localStorage.tsns).tsns.games;
 		    //when list is done being built, apply click listeners to each list item to load selected game
 		    $.when(buildList()).done(function() {
 			  $('#gameLoadArea').on('click', 'li', function(){
@@ -105,7 +105,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
             $('#gameLoadArea').html('You have no local games, load one below');
           }
        };
-      
+
       //if the browser supports local storage, load the file loading system and display to user
       if(hasStorage()) {
     	  //adding event listener to file upload on page and creating a file reader
@@ -113,7 +113,7 @@ define(['jquery', 'yaml', 'game'], function($, yaml, Game) {
     	    var file = fileInput.files[0];
     	    var textType = /text.*/;
     	    var reader = new FileReader();
-    	    
+
     	    //once the file is uploaded, read the yaml file, parse to JSON, and store in doc variable
     	    reader.onload = function(e) {
     		  var doc = yaml.safeLoad(reader.result, 'utf8');

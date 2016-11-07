@@ -19,6 +19,12 @@ define(function(){
       this.name = name;
       this.type = type;
     },
+    setGame: function(game) {
+      this.game = game;
+    },
+    getGame: function() {
+      return this.game;
+    },
     setId: function() {
       this.id = this.game.nextId();
     },
